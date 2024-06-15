@@ -39,6 +39,24 @@ namespace _7._5_Implementing_a_queue_using_an_array
                     Console.WriteLine("Queue is full. Cannot Enqueue Element.");
                 }
             }
+            public int Dequeue() 
+            {
+                if (itemCount > 0)
+                {
+                    int dequeuedValue = queueArray[front++];
+                    if (front == maxSize)
+                    {
+                        front = 0;
+                    }
+                    itemCount--;
+                    return dequeuedValue;
+                }
+                else 
+                {
+                    Console.WriteLine("Queue is Empty. Cannot Dequeue Element.");
+                }
+                return -1;
+            }
             public void PrintQueue() 
             {
                 Console.WriteLine("Queue: ");
@@ -59,6 +77,8 @@ namespace _7._5_Implementing_a_queue_using_an_array
             queue.Enqueue(14);
             queue.Enqueue(15);
             queue.PrintQueue();
+            int dequeuedValue = queue.Dequeue();
+            Console.WriteLine($"Dequeued value: {dequeuedValue}");
         }
     }
 }
